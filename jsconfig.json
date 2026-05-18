@@ -1,0 +1,11 @@
+// @ts-ignore
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "@/*": [
+                "./src/*"
+            ]
+        }
+    }
+}
