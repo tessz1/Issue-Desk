@@ -129,7 +129,6 @@ The project currently uses mock data from `src/components/mocks/issues.js`. Data
 
 ## Possible Improvements
 
-- Persist issues in `localStorage`.
 - Build out the dashboard page.
 - Add search by title and description.
 - Add sorting by date, status, and priority.

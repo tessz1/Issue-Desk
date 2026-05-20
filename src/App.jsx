@@ -3,13 +3,23 @@ import IssuesPage from "./components/page/Issues/components/IssuesPage.jsx";
 import DashBoard from "./components/page/DashBoard/DashBoard.jsx";
 import CreateIssuePage from './components/page/Issues/CreateIssuePage.jsx'
 import { Route, Routes } from "react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { issuesMock } from './components/mocks/issues'
 import { Toaster } from "sonner";
 import IssueDetailsPage from './components/page/Issues/components/IssueDetailsPage'
 
 function App() {
-  const [issues, setIssues] = useState(issuesMock)
+  const [issues, setIssues] = useState(() => {
+    const savedIssues = localStorage.getItem('issues')
+    if (savedIssues) {
+      return JSON.parse(savedIssues)
+    }
+    return issuesMock
+  })
+
+  useEffect(() => {
+    localStorage.setItem('issues', JSON.stringify(issues))
+  }, [issues])
 
   const onCreateIssue = (issueData) => {
     setIssues((currentIssues) => [...currentIssues, issueData])
@@ -22,7 +32,6 @@ function App() {
       if (String(issue.id) !== String(issueId)) {
         return issue
       }
-
       return {
         ...issue,
         status: nextStatus,
