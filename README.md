@@ -129,9 +129,8 @@ The project currently uses mock data from `src/components/mocks/issues.js`. Data
 
 ## Possible Improvements
 
-- Build out the dashboard page.
+- Build out the dashboard page. 
 - Add search by title and description.
 - Add sorting by date, status, and priority.
 - Improve the mobile layout for the issues table.
-- Move issue-related state logic into a custom hook, such as `useIssues`.
 - Add lazy loading for pages to reduce the main bundle size.

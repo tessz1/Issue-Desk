@@ -3,42 +3,13 @@ import IssuesPage from "./components/page/Issues/components/IssuesPage.jsx";
 import DashBoard from "./components/page/DashBoard/DashBoard.jsx";
 import CreateIssuePage from './components/page/Issues/CreateIssuePage.jsx'
 import { Route, Routes } from "react-router";
-import { useEffect, useState } from "react";
-import { issuesMock } from './components/mocks/issues'
+import useIssues from "./hooks/useIssues";
 import { Toaster } from "sonner";
 import IssueDetailsPage from './components/page/Issues/components/IssueDetailsPage'
 
 function App() {
-  const [issues, setIssues] = useState(() => {
-    const savedIssues = localStorage.getItem('issues')
-    if (savedIssues) {
-      return JSON.parse(savedIssues)
-    }
-    return issuesMock
-  })
+  const { issues, onCreateIssue, onUpdateIssueStatus } = useIssues()
 
-  useEffect(() => {
-    localStorage.setItem('issues', JSON.stringify(issues))
-  }, [issues])
-
-  const onCreateIssue = (issueData) => {
-    setIssues((currentIssues) => [...currentIssues, issueData])
-  }
-
-  const onUpdateIssueStatus = (issueId, nextStatus) => {
-    const today = new Date().toISOString().slice(0, 10)
-
-    setIssues((currentIssues) => currentIssues.map((issue) => {
-      if (String(issue.id) !== String(issueId)) {
-        return issue
-      }
-      return {
-        ...issue,
-        status: nextStatus,
-        updatedAt: today,
-      }
-    }))
-  }
 
   return (
     <div className="min-h-screen bg-zinc-50">
