@@ -29,7 +29,7 @@ const IssuesList = ({ issues }) => {
                         return (
                             <div key={item.id} className={`grid ${gridColumns} gap-4 px-4 py-3 border-t hover:bg-zinc-50 items-center`}>
                                 <div onClick={() => navigate(`/issues/${item.id}`)} className='truncate text-zinc-800 font-medium hover:text-zinc-500 transition duration-300 cursor-pointer'>{item.title}</div>
-                                <div className='min-w-0 line-clamp-1 h-[72px] text-sm leading-6 text-zinc-500'>{item.description}</div>
+                                <div className='min-w-0 line-clamp-1 h-[65px] text-sm leading-6 text-zinc-500'>{item.description}</div>
                                 <div className={`flex w-full items-center justify-center rounded-full px-3 py-1 text-xs font-medium border ${statusStyle[item.status]}`}>{t(statusTranslationKey[item.status])}</div>
                                 <div className={`flex w-full items-center justify-center rounded-full px-3 py-1 text-xs font-medium border ${priorityStyle[item.priority]}`}>{t(item.priority)}</div>
                                 <div className='text-sm text-zinc-500'>{item.createdAt}</div>

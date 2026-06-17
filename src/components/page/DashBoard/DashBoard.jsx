@@ -1,9 +1,9 @@
-
+import Step5 from './GraphDashBoard'
 
 export default function DashBoard() {
     return (
         <div>
-            123
+            <Step5 />
         </div>
     )
 }

@@ -25,6 +25,7 @@ Issue Desk is a React application for managing issues: viewing a task list, filt
 - Automatic `updatedAt` update when status changes.
 - EN / RU language switcher.
 - Empty state for filtered lists without matching issues.
+- LocalStorage-based data persistence for issues.
 
 ## Screenshots
 
@@ -106,8 +107,6 @@ src/
   i18next.js
   components/
     Header.jsx
-    mocks/
-      issues.js
     page/
       DashBoard/
       Issues/
@@ -125,7 +124,7 @@ src/
 
 ## Current State
 
-The project currently uses mock data from `src/components/mocks/issues.js`. Data is stored only in React state, so created issues and status changes reset after a page refresh.
+Implemented localStorage based persistence for issues in App.jsx to preserve application state across page refreshes.
 
 ## Possible Improvements
 

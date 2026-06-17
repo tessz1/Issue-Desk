@@ -8,6 +8,7 @@ import { toast } from "sonner";
 import IssuesBackButton from './IssuesBackButton'
 import { useNavigate } from "react-router";
 import { ISSUE_PRIORITIES, ISSUE_STATUSES } from "./constants";
+import { v4 as uuidv4 } from "uuid";
 import {
     Select,
     SelectContent,
@@ -32,11 +33,10 @@ export default function IssueEditor({ onCreateIssue }) {
     })
     const [title, setTitle] = useState('')
     const [priority, setPriority] = useState(ISSUE_PRIORITIES.MEDIUM)
-
     const handleSubmit = () => {
         const today = new Date().toISOString().slice(0, 10)
         const data = {
-            id: crypto.randomUUID(),
+            id: uuidv4(),
             status: ISSUE_STATUSES.OPEN,
             priority,
             title,

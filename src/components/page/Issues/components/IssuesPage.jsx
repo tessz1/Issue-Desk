@@ -5,6 +5,7 @@ import { useState } from 'react'
 import { NewIssues } from './NewIssues.jsx'
 import PaginationIssuesList from './PaginationIssuesList.jsx'
 import { ITEMS_PER_PAGE, ISSUE_STATUSES } from '../constants.js'
+import IssuesSearchInput from './IssuesSearchInput.jsx'
 
 export default function IssuesPage({ issues }) {
     const [statusFilter, setStatusFilter] = useState(ISSUE_STATUSES.ALL)
@@ -19,6 +20,8 @@ export default function IssuesPage({ issues }) {
         ? issues
         : issues.filter((issue) => issue.status === statusFilter)
 
+
+
     const totalPages = Math.max(1, Math.ceil(filteredIssues.length / ITEMS_PER_PAGE))
     const safeCurrentPage = Math.min(currentPage, totalPages)
     const startIndex = (safeCurrentPage - 1) * ITEMS_PER_PAGE
@@ -28,6 +31,7 @@ export default function IssuesPage({ issues }) {
         <div>
             <div className='flex justify-between'>
                 <StateFilter onChangeStatus={onChangeStatus} />
+                <IssuesSearchInput />
                 <NewIssues />
             </div>
             <IssuesList issues={currentIssues} />
