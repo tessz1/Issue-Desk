@@ -12,7 +12,6 @@ Issue Desk is a React application for managing issues: viewing a task list, filt
 - TipTap editor
 - i18next / react-i18next
 - Sonner for toast notifications
-
 ## Features
 
 - Issue list with pagination.

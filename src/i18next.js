@@ -35,6 +35,8 @@ i18n.use(initReactI18next).init({
                 MEDIUM: "Medium",
                 HIGH: "High",
                 URGENT: "Urgent",
+                ACTIVITY: "Last activity",
+                DATE: "Date"
             }
         },
         ru: {
@@ -69,6 +71,8 @@ i18n.use(initReactI18next).init({
                 MEDIUM: "Средний",
                 HIGH: "Высокий",
                 URGENT: "Срочный",
+                ACTIVITY: "Последняя активность",
+                DATE: "Дата",
             }
         }
     },

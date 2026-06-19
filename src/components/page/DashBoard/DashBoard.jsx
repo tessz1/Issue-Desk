@@ -1,9 +1,10 @@
-import Step5 from './GraphDashBoard'
-
+import MassBarChart from './GraphDashBoard'
+import IssuesLastActive from './components/IssuesLastActive'
 export default function DashBoard() {
     return (
-        <div>
-            <Step5 />
+        <div className='flex justify-between gap-24'>
+            <MassBarChart />
+            <IssuesLastActive />
         </div>
     )
 }
