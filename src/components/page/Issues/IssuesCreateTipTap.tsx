@@ -1,14 +1,16 @@
 import { useEditor, EditorContent } from "@tiptap/react"
 import { useState } from "react";
+import type { Issue, IssuePriority } from "./constants";
 import { useTranslation } from 'react-i18next';
-import { IssuesCreateButton } from "../Issues/IssuesCreateButton";
+import { IssuesCreateButton } from "./IssuesCreateButton";
 import StarterKit from "@tiptap/starter-kit"
-import TitleField from "./IssuesCreateTitle";
+import TitleField from "./IssuesCreateTitle.tsx";
 import { toast } from "sonner";
 import IssuesBackButton from './IssuesBackButton'
 import { useNavigate } from "react-router";
 import { ISSUE_PRIORITIES, ISSUE_STATUSES } from "./constants";
 import { v4 as uuidv4 } from "uuid";
+
 import {
     Select,
     SelectContent,
@@ -18,22 +20,28 @@ import {
     SelectTrigger,
     SelectValue,
 } from "../../ui/select";
+
 import {
     Field,
     FieldDescription,
     FieldLabel,
 } from "../../ui/field";
 
-export default function IssueEditor({ onCreateIssue }) {
+type Props = {
+    onCreateIssue: (issue: Issue) => void;
+};
+
+export default function IssueEditor({ onCreateIssue }: Props) {
     const navigate = useNavigate()
     const { t } = useTranslation();
     const editor = useEditor({
         extensions: [StarterKit],
         content: '',
     })
-    const [title, setTitle] = useState('')
-    const [priority, setPriority] = useState(ISSUE_PRIORITIES.MEDIUM)
-    const handleSubmit = () => {
+    const [title, setTitle] = useState<string>('')
+    const [priority, setPriority] = useState<IssuePriority>(ISSUE_PRIORITIES.MEDIUM)
+    const handleSubmit = (): void => {
+
         const today = new Date().toISOString().slice(0, 10)
         const data = {
             id: uuidv4(),
@@ -54,7 +62,7 @@ export default function IssueEditor({ onCreateIssue }) {
             navigate('/issues')
         }
     }
-    const handleInput = (event) => {
+    const handleInput = (event: string) => {
         setTitle(event)
     }
     return (

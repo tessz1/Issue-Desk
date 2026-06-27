@@ -1,5 +1,6 @@
 
 import { NavLink } from "react-router";
+// @ts-ignore
 import { Button } from "../../ui/button"
 import { useTranslation } from 'react-i18next';
 

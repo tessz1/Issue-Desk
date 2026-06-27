@@ -1,8 +1,7 @@
 import { Bar, BarChart, Tooltip, XAxis, YAxis, ResponsiveContainer, Cell } from 'recharts';
-import useIssues from '../../../hooks/useIssues';
 
-export default function MassBarChart() {
-    const { issues } = useIssues();
+
+export default function MassBarChart({ issues }) {
     const allStatus = ['OPEN', 'IN_PROGRESS', 'CLOSED', 'IN_REVIEW', 'BACKLOG'];
 
     const filterState = issues.reduce((acc, current) => {

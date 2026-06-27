@@ -1,13 +1,10 @@
 import { useState } from "react"
 import { useTranslation } from 'react-i18next';
-import useIssues from "@/hooks/useIssues"
 
-const IssuesLastActive = () => {
-    const { t } = useTranslation()
-    const { issues } = useIssues()
-    const filterUpdatedAt = () => {
-        const filtred = issues.filter(issues => issues.updatedAt)
-    }
+
+const IssuesLastActive = ({ issues }) => {
+    const { t } = useTranslation();
+    console.log(issues)
     return (
         <div>
             <section className="rounded-xl border bg-white p-6 shadow-sm min-w-2xs">
@@ -16,7 +13,7 @@ const IssuesLastActive = () => {
                     <div className="min-w-0">
                         {issues.map((issue) => (
                             <div key={issue.id}>
-                                <h1 className="text-2xl font-bold text-zinc-900">
+                                <h1 className="text-xl font-bold text-zinc-900">
                                     {issue.title}
                                 </h1>
                                 <p className="mt-2 text-sm text-zinc-500">

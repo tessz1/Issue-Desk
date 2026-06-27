@@ -5,14 +5,16 @@ import {
 } from "../../ui/field"
 import { Input } from "../../ui/input"
 import { useTranslation } from 'react-i18next';
-
-export default function IssuesCreateTitle({ handleInput }) {
+type Props = {
+    handleInput: (value: string) => void;
+};
+export default function IssuesCreateTitle({ handleInput }: Props) {
     const { t } = useTranslation();
     return (
         <Field>
             <FieldLabel>{t('Title')}</FieldLabel>
             <Input
-                onChange={(event) => handleInput(event.target.value)}
+                onChange={(event: React.ChangeEvent<HTMLInputElement>) => handleInput(event.target.value)}
                 type="text"
                 placeholder={t('EnterTitle')}
             />
